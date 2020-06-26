@@ -57,10 +57,6 @@ def index(request):
 	time_serie_interpolate=pd.Series(interpolate_data, index=time_index_interpolate)
 	time_serie_interpolate=time_serie_interpolate.interpolate(method='polynomial', order=2)
 
-	#fig=time_serie_real.plot(grid=True)
-	#time_serie_interpolate.plot(grid=True,ylim=(0,10000))
-	#plt.show()
-
 	#Seasons meadians
 	real_medians=time_serie_real.groupby(by=season).median()
 	real_medians=real_medians.to_dict()
@@ -73,6 +69,8 @@ def index(request):
 	interpolate_means=interpolate_means.to_dict()
 
 	#Limiting the precision of the values of the means
+	for key,value in interpolate_medians.items():
+		interpolate_medians[key]="%.2f" % value
 	for key,value in real_means.items():
 		real_means[key]="%.2f" % value
 	for key,value in interpolate_means.items():
@@ -86,8 +84,6 @@ def index(request):
 
 	#Constructing the context for the template
 	context = {
-	#'real_data': real_data[:10],
-	#'interpolate_data':interpolate_data[:20],
 	'real_medians':real_medians,
 	'real_means':real_means,
 	'interpolate_medians':interpolate_medians,
