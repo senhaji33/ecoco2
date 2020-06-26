@@ -8,8 +8,9 @@ import os
 
  
 DATE_FORMAT="%Y-%m-%dT%H:%M:%S"
-START=datetime.timestamp(datetime.strptime("2017-01-01T00:00:00",DATE_FORMAT))
-END=datetime.timestamp(datetime.strptime("2019-01-01T00:00:00",DATE_FORMAT))
+START=datetime.timestamp(datetime.strptime("2017-01-01T00:00:00",DATE_FORMAT))-3600
+END=datetime.timestamp(datetime.strptime("2017-01-01T00:00:00",DATE_FORMAT))
+#END=datetime.timestamp(datetime.strptime("2019-01-01T00:00:00",DATE_FORMAT))
 IMPORT_URL = 'https://api-recrutement.ecoco2.com/v1/data'+"?start="+str(START)+"&end="+str(END)
 
 def import_measure(data):

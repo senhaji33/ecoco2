@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'analytics.apps.AnalyticsConfig',
+    'django_matplotlib',
     #'import_data',
     'django.contrib.admin',
     'django.contrib.auth',
