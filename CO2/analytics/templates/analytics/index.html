@@ -1,9 +1,86 @@
-{% if latest_question_list %}
+<TABLE vertical-align= "top">
+<TR>
+	<TH></TH>
+	<TH>Real data</TH>
+	<TH>Interpolated data</TH>
+
+</TR>
+<TR>
+<TD>DATA</TD>
+<TD>{% if real_data %}
     <ul>
-    {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% for m in real_data%}
+        <li>{{m}}</li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No data available.</p>
+{% endif %}</TD>
+<TD>
+	
+	{% if interpolate_data %}
+    <ul>
+    {% for m in interpolate_data%}
+        <li>{{m}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data available.</p>
+    {% endif %}
+</TD>
+</TR>
+<TR>
+<TD>Seasons Medians</TD>
+<TD>
+{% if real_medians %}
+    <ul>
+    {% for index,value in real_medians.items%}
+        <li>{{index}}  :  {{value}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data available.</p>
 {% endif %}
+</TD>
+<TD>
+{% if interpolate_medians %}
+    <ul>
+    {% for index,value in interpolate_medians.items%}
+        <li>{{index}}  :  {{value}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data available.</p>
+{% endif %}
+</TD>
+</TR>
+<TR>
+	<TD>
+Means
+</TD>
+<TD>
+{% if real_means %}
+    <ul>
+    {% for index,value in real_means.items%}
+        <li>{{index}}  :  {{value}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data available.</p>
+{% endif %}
+
+</TD>
+<TD>
+{% if interpolate_means %}
+    <ul>
+    {% for index,value in interpolate_means.items%}
+        <li>{{index}}  :  {{value}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data available.</p>
+{% endif %}
+
+</TD>
+</TR>
+</TABLE>
