@@ -1,3 +1,5 @@
+<h2>CO2 data for 2017 and 2018</h2>
+<h3>Statistics</h3>
 <TABLE vertical-align= "top">
 <TR>
 	<TH></TH>
@@ -5,30 +7,7 @@
 	<TH>Interpolated data</TH>
 
 </TR>
-<!--<TR>
-<TD>DATA</TD>
-<TD>{% if real_data %}
-    <ul>
-    {% for m in real_data%}
-        <li>{{m}}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No data available.</p>
-{% endif %}</TD>
-<TD>
-	
-	{% if interpolate_data %}
-    <ul>
-    {% for m in interpolate_data%}
-        <li>{{m}}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No data available.</p>
-    {% endif %}
-</TD>
-</TR>-->
+
 <TR>
 <TD>Seasons Medians</TD>
 <TD>
@@ -84,9 +63,47 @@ Means
 </TD>
 </TR>
 </TABLE>
-Production CO2 :
+CO2 production :
 {% if production_CO2 %}
        {{production_CO2}} Tons
 {% else %}
     No data available.
 {% endif %}
+
+<h3>Charts</h3>
+
+<TABLE vertical-align= "top">
+<TR>
+<TD>
+Choose start and end dates between 01/01/2017 and 01/01/2019.
+<form action="" method="get">
+start : <input type="date" name="start" max={{max_date}} min={{min_date}}, value={{start_value}}>
+end : <input type="date" name="end" max={{max_date}} min={{min_date}}, value={{end_value}}>
+<input type="submit" value="Submit" name="submit">
+</form>
+</TD>
+<TABLE vertical-align= "top">
+{%if url_real_img%}
+<TR>
+ <TD>
+ <img type="image" src={{url_real_img}}>
+ </TD>   
+</TR>
+{%endif %}
+{%if url_interpolate_img%}
+<TR>
+ <TD>
+    <img type="image" src={{url_interpolate_img}}>
+</TD>   
+</TR>
+{%endif %}
+{%if url_interpolate_img%}
+<TR>
+ <TD>
+    <img type="image" src={{url_diff_img}}>
+</TD>   
+</TR>
+{%endif %}
+</TR>
+</TABLE>
+</TABLE>
